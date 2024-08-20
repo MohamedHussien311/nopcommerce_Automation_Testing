@@ -1,23 +1,18 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class ShoppingCartPage extends PageBase{
     public ShoppingCartPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(css = "a.product-name")
-    public WebElement productNameCell;
-    @FindBy(css = "td.remove-from-cart")
-    WebElement removeProductCell;
-    @FindBy(css = "div.page-body")
-    public WebElement emptyCart;
-    @FindBy(id = "termsofservice")
-    WebElement confirmTermsOfService;
-    @FindBy(id = "checkout")
-    WebElement checkOutLink;
+    public WebElement productNameCell = driver.findElement(By.cssSelector("a.product-name"));
+    WebElement removeProductCell = driver.findElement(By.cssSelector("td.remove-from-cart"));
+    public WebElement emptyCart = driver.findElement(By.cssSelector("div.page-body"));
+    WebElement confirmTermsOfService = driver.findElement(By.id("termsofservice"));
+    WebElement checkOutLink = driver.findElement(By.id("checkout"));
     public void removeProductFromCart(){
         clickButton(removeProductCell);
     }

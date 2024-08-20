@@ -1,52 +1,33 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 public class CheckoutPage extends PageBase{
     public CheckoutPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(id = "BillingNewAddress_CountryId")
-    WebElement countryList;
-    @FindBy(id = "BillingNewAddress_City")
-    WebElement cityNameTxt;
-    @FindBy(id = "BillingNewAddress_Address1")
-    WebElement addressTxt;
-    @FindBy(id = "BillingNewAddress_ZipPostalCode")
-    WebElement zipCodeTxt;
-    @FindBy(id = "BillingNewAddress_PhoneNumber")
-    WebElement phoneNumberTxt;
-    @FindBy(name = "save")
-    WebElement continueBtn;
-    @FindBy(id = "shippingoption_0")
-    WebElement landShippingBtn;
-    @FindBy(css = "button.button-1.shipping-method-next-step-button")
-    WebElement continueShippingBtn;
-    @FindBy(id = "paymentmethod_1")
-    WebElement payByCreditCardBtn;
-    @FindBy(css = "button.button-1.payment-method-next-step-button")
-    WebElement continuePaymentBtn;
-    @FindBy(id = "CardholderName")
-    WebElement cardHolderNameTxt;
-    @FindBy(id = "CardNumber")
-    WebElement cardNumberTxt;
-    @FindBy(id = "CardCode")
-    WebElement cardCodeTxt;
-    @FindBy(id = "ExpireMonth")
-    WebElement expireMonthList;
-    @FindBy(id = "ExpireYear")
-    WebElement expireYearList;
-    @FindBy(css = "button.button-1.payment-info-next-step-button")
-    WebElement paymentNextBtn;
-    @FindBy(css = "button.button-1.confirm-order-next-step-button")
-    WebElement confirmBtn;
-    @FindBy(css = "div.title")
-    public WebElement successCheckoutMessage;
-    @FindBy(linkText = "Click here for order details.")
-    WebElement orderDetailsLink;
+    WebElement countryList = driver.findElement(By.id("BillingNewAddress_CountryId"));
+    WebElement cityNameTxt = driver.findElement(By.id("BillingNewAddress_City"));
+    WebElement addressTxt = driver.findElement(By.id("BillingNewAddress_Address1"));
+    WebElement zipCodeTxt = driver.findElement(By.id("BillingNewAddress_ZipPostalCode"));
+    WebElement phoneNumberTxt = driver.findElement(By.id("BillingNewAddress_PhoneNumber"));
+    WebElement continueBtn = driver.findElement(By.name("save"));
+    WebElement landShippingBtn = driver.findElement(By.id("shippingoption_0"));
+    WebElement continueShippingBtn = driver.findElement(By.cssSelector("button.button-1.shipping-method-next-step-button"));
+    WebElement payByCreditCardBtn = driver.findElement(By.id("paymentmethod_1"));
+    WebElement continuePaymentBtn = driver.findElement(By.cssSelector("button.button-1.payment-method-next-step-button"));
+    WebElement cardHolderNameTxt = driver.findElement(By.id("CardholderName"));
+    WebElement cardNumberTxt = driver.findElement(By.id("CardNumber"));
+    WebElement cardCodeTxt = driver.findElement(By.id("CardCode"));
+    WebElement expireMonthList = driver.findElement(By.id("ExpireMonth"));
+    WebElement expireYearList = driver.findElement(By.id("ExpireYear"));
+    WebElement paymentNextBtn = driver.findElement(By.cssSelector("button.button-1.payment-info-next-step-button"));
+    WebElement confirmBtn = driver.findElement(By.cssSelector("button.button-1.confirm-order-next-step-button"));
+    public WebElement successCheckoutMessage = driver.findElement(By.cssSelector("div.title"));
+    WebElement orderDetailsLink = driver.findElement(By.linkText("Click here for order details."));
     public void billingAddress(String countryName,String cityName,String address,String zipCode,String phoneNumber){
         select = new Select(countryList);
         select.selectByVisibleText(countryName);

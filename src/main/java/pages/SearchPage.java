@@ -1,8 +1,8 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
@@ -10,14 +10,10 @@ public class SearchPage extends PageBase{
     public SearchPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(id = "small-searchterms")
-    WebElement searchTextBox;
-    @FindBy(id = "ui-ui-id-1-3")
-    List<WebElement> productList;
-    @FindBy(css = "button.button-1.search-box-button")
-    WebElement searchBtn;
-    @FindBy(linkText = "Apple MacBook Pro 13-inch")
-    WebElement productTitle;
+    WebElement searchTextBox = driver.findElement(By.id("small-searchterms"));
+    List<WebElement> productList = driver.findElements(By.id("ui-ui-id-1-3"));
+    WebElement searchBtn = driver.findElement(By.cssSelector("button.button-1.search-box-button"));
+    WebElement productTitle = driver.findElement(By.linkText("Apple MacBook Pro 13-inch"));
     public void searchForProduct(String productName){
         setValueToElement(searchTextBox,productName);
         clickButton(searchBtn);

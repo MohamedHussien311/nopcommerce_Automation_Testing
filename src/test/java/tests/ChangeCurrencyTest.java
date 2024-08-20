@@ -8,18 +8,15 @@ import pages.SearchPage;
 
 public class ChangeCurrencyTest extends TestBase{
     String productName = "Apple MacBook Pro 13-inch";
-    SearchPage searchObject;
-    ProductDetailsPage productDetailsObject;
-    HomePage homePage;
+    SearchPage searchObject = new SearchPage(driver);
+    ProductDetailsPage productDetailsObject = new ProductDetailsPage(driver);
+    HomePage homePage = new HomePage(driver);
     @Test(priority = 1)
     public void UserCanChangeCurrency(){
-        homePage = new HomePage(driver);
         homePage.changeCurrency();
     }
     @Test(priority = 2)
     public void userCanSearchForProduct(){
-        searchObject = new SearchPage(driver);
-        productDetailsObject = new ProductDetailsPage(driver);
         searchObject.searchForProduct(productName);
         searchObject.openProductDetailsPage();
         Assert.assertEquals(productDetailsObject.productNameBreadCrumb.getText(),productName);

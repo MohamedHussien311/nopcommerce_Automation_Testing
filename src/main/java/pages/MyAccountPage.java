@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,18 +9,12 @@ public class MyAccountPage extends PageBase{
     public MyAccountPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(linkText = "Change password")
-    WebElement changePasswordLink;
-    @FindBy(id = "OldPassword")
-    WebElement oldPasswordTxt;
-    @FindBy(id = "NewPassword")
-    WebElement newPasswordTxt;
-    @FindBy(id = "ConfirmNewPassword")
-    WebElement confirmPasswordTxt;
-    @FindBy(css = "button.button-1.change-password-button")
-    WebElement changePasswordBtn;
-    @FindBy(css = "p.content")
-    public WebElement passwordUpdatedMessage;
+    WebElement changePasswordLink = driver.findElement(By.linkText("Change password"));
+    WebElement oldPasswordTxt = driver.findElement(By.id("OldPassword"));
+    WebElement newPasswordTxt = driver.findElement(By.id("NewPassword"));
+    WebElement confirmPasswordTxt = driver.findElement(By.id("ConfirmNewPassword"));
+    WebElement changePasswordBtn = driver.findElement(By.cssSelector("button.button-1.change-password-button"));
+    public WebElement passwordUpdatedMessage = driver.findElement(By.cssSelector("p.content"));
     public void openChangePasswordPage(){
         clickButton(changePasswordLink);
     }

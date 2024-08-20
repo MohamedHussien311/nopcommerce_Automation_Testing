@@ -1,23 +1,18 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class AddProductReviewPage extends PageBase{
     public AddProductReviewPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(id = "AddProductReview_Title")
-    WebElement reviewTitleTxt;
-    @FindBy(id = "AddProductReview_ReviewText")
-    WebElement reviewTextBox;
-    @FindBy(id = "addproductrating_4")
-    WebElement goodRating;
-    @FindBy(id = "add-review")
-    public WebElement submitReview;
-    @FindBy(css = "p.content")
-    public WebElement reviewAddedMessage;
+    WebElement reviewTitleTxt = driver.findElement(By.id("AddProductReview_Title"));
+    WebElement reviewTextBox = driver.findElement(By.id("AddProductReview_ReviewText"));
+    WebElement goodRating = driver.findElement(By.id("addproductrating_4"));
+    public WebElement submitReview = driver.findElement(By.id("review"));
+    public WebElement reviewAddedMessage = driver.findElement(By.cssSelector("p.content"));
     public void addProductReview(String reviewTitle,String reviewText){
         setValueToElement(reviewTitleTxt,reviewTitle);
         setValueToElement(reviewTextBox,reviewText);

@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,10 +9,8 @@ public class OrderDetailsPage extends PageBase{
     public OrderDetailsPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(linkText = "Print")
-    WebElement printBtn;
-    @FindBy(linkText = "PDF Invoice")
-    WebElement downloadPDFDetailsBtn;
+    WebElement printBtn = driver.findElement(By.linkText("Print"));
+    WebElement downloadPDFDetailsBtn = driver.findElement(By.linkText("PDF Invoice"));
     public void printOrderDetails(){
         clickButton(printBtn);
     }

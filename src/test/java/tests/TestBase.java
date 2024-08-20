@@ -17,7 +17,6 @@ public class TestBase {
    @BeforeSuite
     public void startDriver(){
         driver = new ChromeDriver();
-      //  driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
         driver.get("https://demo.nopcommerce.com/");
     }

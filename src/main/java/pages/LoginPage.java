@@ -1,20 +1,17 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends PageBase{
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(id = "Email")
-    WebElement emailTxt;
-    @FindBy(id = "Password")
-    WebElement passwordTxt;
-    @FindBy(css = "button.button-1.login-button")
-    WebElement loginBtn;
+    WebElement emailTxt = driver.findElement(By.id("Email"));
+    WebElement passwordTxt = driver.findElement(By.id("Password"));
+    WebElement loginBtn = driver.findElement(By.cssSelector("button.button-1.login-button"));
     public void userLogin(String email, String password){
         setValueToElement(emailTxt,email);
         setValueToElement(passwordTxt,password);

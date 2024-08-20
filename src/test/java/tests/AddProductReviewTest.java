@@ -5,11 +5,11 @@ import org.testng.annotations.Test;
 import pages.*;
 
 public class AddProductReviewTest extends TestBase{
-    ProductDetailsPage productDetailsObject;
-    HomePage homePage;
-    UserRegisterationPage userRegisterationPage;
-    SearchPage searchObject;
-    AddProductReviewPage addProductReviewPage;
+    ProductDetailsPage productDetailsObject = new ProductDetailsPage(driver);
+    HomePage homePage = new HomePage(driver);
+    UserRegisterationPage userRegisterationPage = new UserRegisterationPage(driver);
+    SearchPage searchObject = new SearchPage(driver);
+    AddProductReviewPage addProductReviewPage = new AddProductReviewPage(driver);
     String firstName = fakeData.name().firstName();
     String lastName = fakeData.name().lastName();
     String email = fakeData.internet().emailAddress();
@@ -19,9 +19,7 @@ public class AddProductReviewTest extends TestBase{
     String reviewText = "This is a good product.";
     @Test(priority = 1)
     public void UserCanRegisterSuccessfully(){
-        homePage = new HomePage(driver);
         homePage.openReigisterationPage();
-        userRegisterationPage = new UserRegisterationPage(driver);
         userRegisterationPage.userRegisteration(firstName,lastName,
                 email,password);
         Assert.assertEquals(userRegisterationPage.registeredSuccessMessage.getText()
@@ -29,15 +27,12 @@ public class AddProductReviewTest extends TestBase{
     }
     @Test(priority = 2)
     public void userCanSearchForProduct(){
-        searchObject = new SearchPage(driver);
-        productDetailsObject = new ProductDetailsPage(driver);
         searchObject.searchForProduct(productName);
         searchObject.openProductDetailsPage();
         Assert.assertEquals(productDetailsObject.productNameBreadCrumb.getText(),productName);
     }
     @Test(priority = 3)
     public void RegisteredUserCanAddProductReview(){
-        addProductReviewPage = new AddProductReviewPage(driver);
         productDetailsObject.openAddProductReviewPage();
         addProductReviewPage.addProductReview(reviewTitle,reviewText);
         Assert.assertEquals(addProductReviewPage.reviewAddedMessage.getText(),

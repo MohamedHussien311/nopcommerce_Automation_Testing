@@ -7,18 +7,16 @@ import pages.LoginPage;
 import pages.UserRegisterationPage;
 
 public class UserRegisterationTest extends TestBase{
-    HomePage homePage;
-    UserRegisterationPage userRegisterationPage;
-    LoginPage loginPage;
+    HomePage homePage = new HomePage(driver);
+    UserRegisterationPage userRegisterationPage = new UserRegisterationPage(driver);
+    LoginPage loginPage = new LoginPage(driver);
     String firstName = fakeData.name().firstName();
     String lastName = fakeData.name().lastName();
     String email = fakeData.internet().emailAddress();
     String password = fakeData.number().digits(8).toString();
     @Test(priority = 1)
     public void UserCanRegisterSuccessfully(){
-        homePage = new HomePage(driver);
         homePage.openReigisterationPage();
-        userRegisterationPage = new UserRegisterationPage(driver);
         userRegisterationPage.userRegisteration(firstName,lastName,
                 email,password);
         Assert.assertEquals(userRegisterationPage.registeredSuccessMessage.getText()
@@ -31,7 +29,6 @@ public class UserRegisterationTest extends TestBase{
     @Test(dependsOnMethods = {"RegisteredUserCanLogoutSuccessfully"})
     public void RegisteredUserCanLoginSuccessfully(){
         homePage.openLoginPage();
-        loginPage = new LoginPage(driver);
         loginPage.userLogin(email,password);
         Assert.assertEquals(userRegisterationPage.logoutLink.getText(),"Log out");
     }

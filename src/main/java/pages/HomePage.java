@@ -1,10 +1,10 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 public class HomePage extends PageBase{
@@ -14,22 +14,14 @@ public class HomePage extends PageBase{
         jse = (JavascriptExecutor) driver;
         action = new Actions(driver);
     }
-    @FindBy(linkText = "Register")
-    WebElement registerLink;
-    @FindBy(linkText = "Log in")
-    WebElement loginLink;
-    @FindBy(linkText = "My account")
-    WebElement myAccountLink;
-    @FindBy(linkText = "Contact us")
-    WebElement contactUsLink;
-    @FindBy(id = "customerCurrency")
-    WebElement currencyList;
-    @FindBy(linkText = "Computers")
-    WebElement computersMenu;
-    @FindBy(linkText = "Software")
-    WebElement softwareCategory;
-    @FindBy(css = "strong.current-item")
-    public WebElement selectedCategory;
+    WebElement registerLink = driver.findElement(By.linkText("Register"));
+    WebElement loginLink = driver.findElement(By.linkText("Log in"));
+    WebElement myAccountLink = driver.findElement(By.linkText("My account"));
+    WebElement contactUsLink = driver.findElement(By.linkText("Contact us"));
+    WebElement currencyList = driver.findElement(By.id("customerCurrency"));
+    WebElement computersMenu = driver.findElement(By.linkText("Computers"));
+    WebElement softwareCategory = driver.findElement(By.linkText("Software"));
+    public WebElement selectedCategory = driver.findElement(By.cssSelector("strong.current-item"));
     public void openReigisterationPage(){
         clickButton(registerLink);
     }
